@@ -57,10 +57,19 @@ public class IntArrayWorker
      * Method to count the number of times a passed integer is found in the matrix
      * @return the total count of this value in the matrix
      */
-  /*public int getCount(int value)
-  {
-    int cou
-  }*/
+    public int getCount(int value)
+    {
+        int count = 0;
+        for (int[] rowArray : matrix)
+        {
+            for (int item : rowArray)
+            {
+                if (item == value)
+                    count++;
+            }
+        }
+        return count;
+    }
 
     /**
      * Method to fill with an increasing count
