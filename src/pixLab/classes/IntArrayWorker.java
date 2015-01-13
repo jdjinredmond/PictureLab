@@ -70,6 +70,18 @@ public class IntArrayWorker
         }
         return count;
     }
+    public int getLargest( )
+    {
+        int max = matrix[0][0];
+        for (int[] i : matrix)
+        {
+            if(i > max)
+            {
+                max = i;
+            }
+        }
+        return max;
+    }
 
     /**
      * Method to fill with an increasing count
