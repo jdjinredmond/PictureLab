@@ -1,4 +1,4 @@
-package pixLab.classes;
+package pixLab;
 
 public class IntArrayWorker
 {
@@ -70,17 +70,39 @@ public class IntArrayWorker
         }
         return count;
     }
+
+    /**
+     * Method to find the largest value in the matrix
+     * @return largest value in the matrix
+     */
     public int getLargest( )
     {
-        int max = matrix[0][0];
-        for (int[] i : matrix)
+        int max = 0;
+        for (int[] rowArray : matrix)
         {
-            if(i > max)
+            for (int item : rowArray)
             {
-                max = i;
+                if (item > max)
+                {
+                    max = item;
+                }
             }
         }
         return max;
+    }
+
+    /**
+     * Method to return the total of all integers in a specified column
+     * @return the total of all integers in specified column
+     */
+    public int getColTotal(int col)
+    {
+        int total = 0;
+        for (int[] rowArray : matrix)
+        {
+            total += rowArray[col];
+        }
+        return total;
     }
 
     /**

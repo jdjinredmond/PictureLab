@@ -1,10 +1,10 @@
-package pixLab.classes;
+package pixLab;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import java.util.Properties;
-import java.io.*;
-import java.net.*;
+import java.io.File;
+import java.net.URL;
+import java.net.URLDecoder;
 
 /**
  * A class to make working with a file chooser easier
@@ -115,11 +115,7 @@ public class FileChooser
         try
         {
             // get the URL for where we loaded this class
-            Class currClass = Class.forName("FileChooser");
-            URL classURL = currClass.getResource("FileChooser.class");
-            URL fileURL = new URL(classURL, "../images/");
-            directory = fileURL.getPath();
-            directory = URLDecoder.decode(directory, "UTF-8");
+            directory = new URL(FileChooser.class.getResource("FileChooser.class"), "../images/").getPath();
             dirFile = new File(directory);
             if (dirFile.exists())
             {
@@ -128,6 +124,7 @@ public class FileChooser
             }
         } catch (Exception ex)
         {
+            return null;
         }
 
         return directory;

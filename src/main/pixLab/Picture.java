@@ -1,12 +1,7 @@
-package pixLab.classes;
+package pixLab;
 
 import java.awt.*;
-import java.awt.font.*;
-import java.awt.geom.*;
 import java.awt.image.BufferedImage;
-import java.text.*;
-import java.util.*;
-import java.util.List; // resolves problem with java.awt.List and java.util.List
 
 /**
  * A class that represents a picture.  This class inherits from
@@ -103,6 +98,22 @@ public class Picture extends SimplePicture
             for (Pixel pixelObj : rowArray)
             {
                 pixelObj.setBlue(0);
+            }
+        }
+    }
+
+    /**
+     * Method to set everything except blue to 0
+     */
+    public void keepOnlyBlue()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels)
+        {
+            for (Pixel pixelObj : rowArray)
+            {
+                pixelObj.setRed(0);
+                pixelObj.setGreen(0);
             }
         }
     }

@@ -1,4 +1,4 @@
-package pixLab.classes;
+package pixLab;
 
 /**
  * This class contains class (static) methods
@@ -18,6 +18,17 @@ public class PictureTester
         Picture beach = new Picture("beach.jpg");
         beach.explore();
         beach.zeroBlue();
+        beach.explore();
+    }
+
+    /**
+     * Method to test keepOnlyBlue
+     */
+    public static void testKeepOnlyBlue()
+    {
+        Picture beach = new Picture("beach.jpg");
+        beach.explore();
+        beach.keepOnlyBlue();
         beach.explore();
     }
 
@@ -73,7 +84,7 @@ public class PictureTester
         // and comment out the ones you don't want
         // to run
         testZeroBlue();
-        //testKeepOnlyBlue();
+        testKeepOnlyBlue();
         //testKeepOnlyRed();
         //testKeepOnlyGreen();
         //testNegate();
