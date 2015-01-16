@@ -1,8 +1,11 @@
 package pixLab;
 
+import com.jhlabs.image.EdgeFilter;
+import com.jhlabs.image.GaussianFilter;
+import com.jhlabs.image.SharpenFilter;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import com.jhlabs.image.*;
 
 /**
  * A class that represents a picture.  This class inherits from
@@ -492,13 +495,16 @@ public class Picture extends SimplePicture
 
     /**
      * Real edge detection
+     *
      * @param blurRadius amount to blur before detecting edges
      */
     public void edgeDetection3(int blurRadius)
     {
         GaussianFilter gaussianFilter = new GaussianFilter(blurRadius);
         EdgeFilter edgeFilter = new EdgeFilter();
-        edgeFilter.filter(gaussianFilter.filter(getBufferedImage(), getBufferedImage()), getBufferedImage());
+        SharpenFilter sharpenFilter = new SharpenFilter();
+        sharpenFilter.filter(edgeFilter.filter(gaussianFilter.filter(getBufferedImage(), getBufferedImage()),
+                                               getBufferedImage()), getBufferedImage());
         grayscale();
         negate();
     }
