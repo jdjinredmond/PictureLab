@@ -2,6 +2,7 @@ package pixLab;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import com.jhlabs.image.*;
 
 /**
  * A class that represents a picture.  This class inherits from
@@ -489,8 +490,22 @@ public class Picture extends SimplePicture
         }
     }
 
+    /**
+     * Real edge detection
+     * @param blurRadius amount to blur before detecting edges
+     */
+    public void edgeDetection3(int blurRadius)
+    {
+        GaussianFilter gaussianFilter = new GaussianFilter(blurRadius);
+        EdgeFilter edgeFilter = new EdgeFilter();
+        edgeFilter.filter(gaussianFilter.filter(getBufferedImage(), getBufferedImage()), getBufferedImage());
+        grayscale();
+        negate();
+    }
 
-    /* Main method for testing - each class in Java can have a main
+
+    /**
+     * Main method for testing - each class in Java can have a main
      * method
      */
     public static void main(String[] args)
